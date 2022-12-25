@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1a07a13261f746be8d2187142b766a37" Name="Diagram1">
+        <EntityTypeShape EntityType="MoMoneyModel.category" Width="1.5" PointX="6.625" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoMoneyModel.income" Width="1.5" PointX="2" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoMoneyModel.logins" Width="1.5" PointX="2.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoMoneyModel.payments" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="MoMoneyModel.FK_payments2_category" ManuallyRouted="false" />
+        <AssociationConnector Association="MoMoneyModel.FK_income2_logins" ManuallyRouted="false" />
+        <AssociationConnector Association="MoMoneyModel.FK_payments2_logins" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
