@@ -25,9 +25,12 @@ namespace MoMoney
     {
         public MainWindow()
         {
+            Login loginwindow = new Login();
+            loginwindow.ShowDialog();
+
+
             InitializeComponent();
 
-            PayContext.currentId = 5;
             var c = new PayContext();
 
             //var test = new ObservableCollection<login>();
@@ -46,6 +49,7 @@ namespace MoMoney
             var result = (from a in c.Categories
                       join b in c.Payments
                       on a.id equals b.category
+                      where b.uid == PayContext.currentId
                       select new
                       {
                           name = a.name.Trim(),
@@ -73,6 +77,10 @@ namespace MoMoney
                               b.note
                           }).ToList();
             Lefttable.ItemsSource = result;
+        }
+        public void CloseViaLogin(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
