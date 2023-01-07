@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="login.EntriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:login"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700"
+             >
+    <Border  CornerRadius="10"
+                 Background="White">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="NewEntryBtn"
+                    Margin="552,22,20,13.2"
+                    Height="40"
+                    Background="Purple"
+                    Content="Add new entry +"
+                    FontSize="16"
+                    HorizontalAlignment="Stretch"
+                    Click="NewEntryBtn_Click"
+                    
+                    >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <TextBlock Text="Activity"
+                       
+                       FontSize="25"
+                        Margin="25,22,588,13.2"/>
+            <Border Grid.Row="1"  CornerRadius="10,10,10,10" BorderThickness="2,2,2,2"
+                    Margin="25,9.8,20,39.6"
+                    Background="PeachPuff">
+                <DataGrid x:Name="DataGridEntries"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Margin="1,1,1,1"
+                          Background="Transparent"
+                          >
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Coral"></Setter>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="BorderThickness" Value="1,1,1,2"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Action" Width="150" Binding="{Binding _name}" />
+                        <DataGridTextColumn Header="Category" Width="150" Binding="{Binding _category}" />
+                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value}" />
+                        <DataGridTextColumn Header="Date" Width="150" Binding="{Binding _date}"/>
+                    
+
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Border>
+
+        </Grid>
+
+    </Border>
+</UserControl>

@@ -5,18 +5,13 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Data.Entity;
-using System.Runtime.Remoting.Contexts;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace MoMoney
+namespace login
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-
     }
-
 }

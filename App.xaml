@@ -1,9 +1,24 @@
-﻿<Application x:Class="MoMoney.App"
+﻿<Application x:Class="login.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MoMoney"
+             xmlns:local="clr-namespace:login"
+           
+            
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UIColors.xaml"/>
+                <ResourceDictionary Source="ButtonStyles.xaml"/>
+                <ResourceDictionary Source="MenuButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type local:HomeViewModel}">
+                <local:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:EntriesViewModel}">
+                <local:EntriesView/>
+            </DataTemplate>
+            
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
