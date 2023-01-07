@@ -42,3 +42,9 @@ C:\Users\stef\Desktop\MoMoney\obj\Debug\MoMoney.csproj.CopyComplete
 C:\Users\stef\Desktop\MoMoney\obj\Debug\MoMoney.exe
 C:\Users\stef\Desktop\MoMoney\obj\Debug\MoMoney.pdb
 C:\Users\stef\Desktop\MoMoney\obj\Debug\MoMoney_Content.g.cs
+C:\Users\stef\Desktop\MoMoney\bin\Debug\LiveCharts.dll
+C:\Users\stef\Desktop\MoMoney\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\stef\Desktop\MoMoney\bin\Debug\LiveCharts.pdb
+C:\Users\stef\Desktop\MoMoney\bin\Debug\LiveCharts.xml
+C:\Users\stef\Desktop\MoMoney\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\stef\Desktop\MoMoney\bin\Debug\LiveCharts.Wpf.xml
