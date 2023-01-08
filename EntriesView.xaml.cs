@@ -55,8 +55,7 @@ namespace login
             
             //here I guess u will initialize the comboBox with the existent categories
             //it will be better suited to edit the below function to take no parameters and load the items directly froom your db
-            entryWindow.addComboBoxCategoryItems("groceries"); // i guess u will be loading a list of items here, u can change this functios in AddEntryView.xaml.cs
-            entryWindow.addComboBoxCategoryItems("shopping");
+            entryWindow.addComboBoxCategoryItems();
             entryWindow.Show();
         }
     }

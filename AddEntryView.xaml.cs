@@ -38,9 +38,13 @@ namespace login
             this.Close();
         }
 
-        public void addComboBoxCategoryItems(string category)
+        public void addComboBoxCategoryItems()
         {
-            this.CategoryComboBox.Items.Add(category);
+            //this.CategoryComboBox.Items.Add(category);
+            PayContext c = new PayContext();
+            CategoryComboBox.ItemsSource = (from a in c.Categories
+                                            select  a.name.Trim()
+                                            ).ToList();
         }
 
         private void Save_btn_Click(object sender, RoutedEventArgs e)
@@ -54,6 +58,7 @@ namespace login
             //txtAmount.Text
 
             //PayContext.AddPayment(category, float.Parse(txtAmount.Text.ToString()), this.txtDescription.Text.ToString(), DateTime.Parse(txtDate.Text));
+            
             this.Close();
 
         }
