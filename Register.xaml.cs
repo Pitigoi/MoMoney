@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoMoney.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,11 +60,20 @@ namespace login
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            PayContext c = new PayContext();
             username = txtUser.Text;
             password = txtPass.Password;
             string check = txtPassConfirm.Password;
-
-            if (password != check)
+            var result = (from a in c.Logins
+                          where a.username.Trim() == username.ToString()
+                          select new { a.id }).ToList().Count;
+            if (result>0)
+            {
+                //user deja existent
+                //Error2.Visibility = Visibility.Visible;
+                txtUser.Clear();
+            }
+            else if (password != check)
             {
                 Error.Visibility = Visibility.Visible;
                 txtPass.Clear();
@@ -76,7 +86,7 @@ namespace login
                 Dashboard objDashWindow = new Dashboard();
                // this.Hide();
                 objDashWindow.Show();
-
+                PayContext.AddUser("", username, password);
             }
 
             //to do: save in db user and pass;
