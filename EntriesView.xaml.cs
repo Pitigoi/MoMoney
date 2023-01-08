@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoMoney.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,21 +22,7 @@ namespace login
     public partial class EntriesView : UserControl
     {
         //u can delete Entry class and directly add your data sets to the datagrid
-        public class Entry
-        {
-            public Entry(string name, string vlaue, string date, string category)
-            {
-                this._name = name;
-                this._category = category;
-                this._value = vlaue;
-                this._date = date;
-            }
-            public string _name { get; set; }
-            public string _value { get; set; }
-            public string _date { get; set; }
-            public string _category { get; set; }
-
-        }
+        
         public EntriesView()
         {
             InitializeComponent();
@@ -45,7 +32,21 @@ namespace login
 
         public void addData()   //edit this function so you can add data however u like them from db
         {
-            this.DataGridEntries.Items.Add(new Entry("ioana", "200", "12/2/2020", "groceries"));
+            //this.DataGridEntries.Items.Add(new Entry("ioana", "200", "12/2/2020", "groceries"));
+
+            PayContext c = new PayContext();
+
+            DataGridEntries.ItemsSource=(from a in c.Categories
+                                         join b in c.Payments
+                                         on a.id equals b.category
+                                         where b.uid == PayContext.currentId
+                                         select new
+                                         {
+                                             _category = a.name.Trim(),
+                                             _date = b.time,
+                                             _value = b.amount,
+                                             _name = b.note
+                                         }).ToList();
         }
 
         private void NewEntryBtn_Click(object sender, RoutedEventArgs e)
