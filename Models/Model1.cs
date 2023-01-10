@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace MoMoney.Models
+namespace login
 {
     public partial class PayContext : DbContext
     {

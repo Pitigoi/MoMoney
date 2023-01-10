@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MoMoney.Models
+namespace login
 {
     using System;
     using System.Collections.Generic;
