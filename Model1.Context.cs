@@ -129,21 +129,21 @@ namespace login
 
             }
         }
-        public static void AddPayment(int categoryid, decimal suma, string note)
+        public static void AddPayment(int categoryid, decimal suma, string note,DateTime date)
         {
+            if (suma > 0)
+                suma *= -1;
             using (var context = new PayContext())
             {
                 if (context.Categories.Find(categoryid) == null)
                 {
                     return;
                 }
-                if (suma < 0)
-                    suma *= -1;
                 var payment = new payments
                 {
                     uid = PayContext.currentId,
                     category = categoryid,
-                    time = DateTime.Now,
+                    time = date,
                     amount = suma,
                     note = note
                 };
@@ -153,7 +153,7 @@ namespace login
                 context.SaveChanges();
             }
         }
-        public static void AddIncome(decimal suma, string note)
+        public static void AddIncome(decimal suma, string note,DateTime date)
         {
 
             if (suma < 0)
@@ -163,7 +163,7 @@ namespace login
                 var income = new incomes
                 {
                     uid = PayContext.currentId,
-                    time = DateTime.Now,
+                    time = date,
                     amount = suma,
                     note = note
                 };

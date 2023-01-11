@@ -15,46 +15,37 @@ using System.Windows.Shapes;
 
 namespace login
 {
-    /// <summary>
-    /// Interaction logic for EntriesView.xaml
-    /// </summary>
     public partial class EntriesView : UserControl
     {
-        //u can delete Entry class and directly add your data sets to the datagrid
         
         public EntriesView()
         {
             InitializeComponent();
-
-            addData();
-        }
-
-        public void addData()   //edit this function so you can add data however u like them from db
-        {
-            //this.DataGridEntries.Items.Add(new Entry("ioana", "200", "12/2/2020", "groceries"));
-
             PayContext c = new PayContext();
-
-            DataGridEntries.ItemsSource=(from a in c.Categories
-                                         join b in c.Payments
-                                         on a.id equals b.category
-                                         where b.uid == PayContext.currentId
-                                         select new
-                                         {
-                                             _category = a.name.Trim(),
-                                             _date = b.time,
-                                             _value = b.amount,
-                                             _name = b.note
-                                         }).ToList();
+            DataGridEntries.ItemsSource = (from a in c.Categories
+                                           join b in c.Payments
+                                           on a.id equals b.category
+                                           where b.uid == PayContext.currentId
+                                           select new
+                                           {
+                                               _name = b.note,
+                                               _category = a.name.Trim(),
+                                               _value = b.amount,
+                                               _date = b.time
+                                           }).Union(from b in c.Incomes
+                                                    where b.uid == PayContext.currentId
+                                                    select new
+                                                    {
+                                                        _name = b.note,
+                                                        _category = "Income",
+                                                        _value = b.amount,
+                                                        _date = b.time
+                                                    }).OrderByDescending(s => s._date).ToList();
         }
 
         private void NewEntryBtn_Click(object sender, RoutedEventArgs e)
         {
             AddEntryView entryWindow = new AddEntryView();
-            
-            //here I guess u will initialize the comboBox with the existent categories
-            //it will be better suited to edit the below function to take no parameters and load the items directly froom your db
-            entryWindow.addComboBoxCategoryItems();
             entryWindow.Show();
         }
     }

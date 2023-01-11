@@ -85,6 +85,9 @@
     <Compile Include="ArtanPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BudgetInfoCard.xaml.cs">
+      <DependentUpon>BudgetInfoCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
     <Page Include="AddEntryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BudgetInfoCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ButtonStyles.xaml">
       <SubType>Designer</SubType>

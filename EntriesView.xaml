@@ -41,6 +41,7 @@
                     Margin="25,9.8,20,39.6"
                     Background="PeachPuff">
                 <DataGrid x:Name="DataGridEntries"
+                          AutoGenerateColumns="False"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Top"
                           Margin="1,1,1,1"
@@ -57,11 +58,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Action" Width="150" Binding="{Binding _name}" />
                         <DataGridTextColumn Header="Category" Width="150" Binding="{Binding _category}" />
-                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value}" />
+                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value, StringFormat=C}" />
                         <DataGridTextColumn Header="Date" Width="150" Binding="{Binding _date}"/>
-                    
-
-
                     </DataGrid.Columns>
 
                 </DataGrid>

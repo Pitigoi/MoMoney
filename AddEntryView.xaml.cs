@@ -14,16 +14,13 @@ using System.Windows.Shapes;
 
 namespace login
 {
-    /// <summary>
-    /// Interaction logic for AddEntryView.xaml
-    /// </summary>
     public partial class AddEntryView : Window
     {
         public AddEntryView()
         {
             InitializeComponent();
             PayContext c = new PayContext();
-            CategoryComboBox.ItemsSource =(from a in c.Categories select a.name).ToList();
+            CategoryComboBox.ItemsSource =(from a in c.Categories select a.name.Trim()).ToList();
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -37,15 +34,6 @@ namespace login
             this.Close();
         }
 
-        public void addComboBoxCategoryItems()
-        {
-            //this.CategoryComboBox.Items.Add(category);
-            PayContext c = new PayContext();
-            CategoryComboBox.ItemsSource = (from a in c.Categories
-                                            select  a.name.Trim()
-                                            ).ToList();
-        }
-
         private void Save_btn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -54,12 +42,25 @@ namespace login
             // use this.txtDate.Text to get the date
             // use this.txtDescription.Text to get the description (ex: sold my latop; got money for xmas, etc)
             PayContext c = new PayContext();
-            //txtAmount.Text
-
-            //PayContext.AddPayment(category, float.Parse(txtAmount.Text.ToString()), this.txtDescription.Text.ToString(), DateTime.Parse(txtDate.Text));
-            
-            this.Close();
-
+            decimal val = decimal.Parse(txtAmount.Text.ToString());
+            if (CategoryComboBox.SelectedIndex!=-1)
+            {
+                int categid= (from a in c.Categories
+                              select a.id).ToList()[CategoryComboBox.SelectedIndex];
+                if (val > 0)
+                    val = -val;
+                PayContext.AddPayment(categid, val, txtDescription.Text, DateTime.Parse(txtDate.Text));
+                Close();
+            }
+            else if(val>0)
+            {
+                PayContext.AddIncome(val, txtDescription.Text, DateTime.Parse(txtDate.Text));
+                Close();
+            }
+            else
+            {
+                txtAmount.Text.Remove(0,1);
+            }
         }
     }
 }
