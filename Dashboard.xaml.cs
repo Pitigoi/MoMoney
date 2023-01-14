@@ -12,9 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
-
-
 namespace login
 {
     /// <summary>
@@ -22,13 +19,9 @@ namespace login
     /// </summary>
     public partial class Dashboard : Window
     {
-        
-        public string _username { get; set; }
         public Dashboard()
         {
             InitializeComponent();
-            this._username = "Ioana";
-            this.WelcomeTextBox.Text = "Welcome, " + _username + "!";
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

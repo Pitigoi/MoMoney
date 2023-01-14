@@ -21,15 +21,15 @@
             Opacity="0.95">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="GreenYellow" Offset="0"/>
-                    <GradientStop Color="YellowGreen" Offset="0.75"/>
-                    <GradientStop Color="Yellow" Offset="1"/>
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#DA34AE" Offset="0.75"/>
+                    <GradientStop Color="#8A16C1" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="DarkGreen" Offset="0"/>
-                    <GradientStop Color="DarkOliveGreen" Offset="1"/>
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -44,7 +44,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-
+                    
                     <Button x:Name="btnMinimize"                           
                             BorderThickness="0"
                             Content="-"
@@ -56,10 +56,10 @@
                             Click="btnMinimize_Click">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="Gray"/>
+                                <Setter Property="Background" Value="#28AEED"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="LightGray"/>
+                                        <Setter Property="Background" Value="#278BEF"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -86,10 +86,10 @@
                             Click="btnClose_Click">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="Crimson"/>
+                                <Setter Property="Background" Value="#DA34AE"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="OrangeRed"/>
+                                        <Setter Property="Background" Value="#C62DAE"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -119,7 +119,7 @@
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="Welcome!"
-                               Foreground="WhiteSmoke"
+                               Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
@@ -127,43 +127,18 @@
                                TextAlignment="Center"
                                Margin="0,5,0,0"/>
                     <TextBlock Text="Username"
-                               Foreground="WhiteSmoke"
+                               Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
-                               Margin="0,20,-0.8,0"/>
+                               Margin="0,35,-0.8,0"/>
                     <TextBox x:Name="txtUser"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
-                             CaretBrush="WhiteSmoke"
-                             BorderBrush="WhiteSmoke"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0">
-                        <TextBox.Background>
-                            <ImageBrush ImageSource="user.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
-                        </TextBox.Background>
-
-                    </TextBox>
-                    <TextBlock Text="Name"
-                               Foreground="WhiteSmoke"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"                             
-                               Margin="0 15 0 0"/>
-                    <TextBox x:Name="txtName"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="WhiteSmoke"
-                             BorderBrush="WhiteSmoke"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
@@ -176,7 +151,7 @@
                         </TextBox.Background>
                     </TextBox>
                     <TextBlock Text="Password"
-                               Foreground="WhiteSmoke"
+                               Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
@@ -186,8 +161,8 @@
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
-                             CaretBrush="WhiteSmoke"
-                             BorderBrush="WhiteSmoke"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
@@ -200,7 +175,7 @@
                         </PasswordBox.Background>
                     </PasswordBox>
                     <TextBlock Text="Confirm Password"
-                               Foreground="WhiteSmoke"
+                               Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
@@ -210,8 +185,8 @@
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
-                             CaretBrush="WhiteSmoke"
-                             BorderBrush="WhiteSmoke"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
@@ -224,7 +199,6 @@
                         </PasswordBox.Background>
                     </PasswordBox>
 
-
                     <TextBlock Text="Passwords need to match!"
                                x:Name="Error"
                                Visibility="Hidden"
@@ -234,6 +208,7 @@
                                FontFamily="Montserrat"                             
                                Margin="0,10,0,0"
                                TextWrapping="Wrap"/>
+
                     <Button x:Name="btnRegister"                          
                         BorderThickness="0"
                         Content="REGISTER"
@@ -241,14 +216,14 @@
                         FontSize="12"
                         FontFamily="Montserrat"
                         Cursor="Hand"                           
-                        Margin="0,10,0,0"
+                        Margin="0,30,0,0"
                         Click="btnRegister_Click">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
-                                <Setter Property="Background" Value="YellowGreen"/>
+                                <Setter Property="Background" Value="#462AD8"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="LimeGreen"/>
+                                        <Setter Property="Background" Value="#28AEED"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -264,16 +239,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <TextBlock Text="Username already exists!"
-                               x:Name="ErrorUsername"
-                               Visibility="Hidden"
-                               Foreground="#D7596D"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"                             
-                               Margin="0,10,0,0"
-                               TextWrapping="Wrap"/>
-
+                    
 
                 </StackPanel>
             </Grid>
