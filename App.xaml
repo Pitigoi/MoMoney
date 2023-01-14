@@ -11,12 +11,19 @@
                 <ResourceDictionary Source="UIColors.xaml"/>
                 <ResourceDictionary Source="ButtonStyles.xaml"/>
                 <ResourceDictionary Source="MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="MenuButtonTheme2.xaml"/>
+                <ResourceDictionary Source="btnTheme.xaml"/>
+
+
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type local:HomeViewModel}">
                 <local:HomeView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type local:EntriesViewModel}">
                 <local:EntriesView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ChartsViewModel}">
+                <local:ChartsView/>
             </DataTemplate>
             
         </ResourceDictionary>

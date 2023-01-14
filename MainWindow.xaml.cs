@@ -40,37 +40,14 @@ namespace login
         {
             Application.Current.Shutdown();
         }
-        public bool IsValid(string s)
-        {
-            foreach (char c in s)
-            {
-                if (!char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c))
-                    return false;
-            }
-            return true;
-        }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             //  here u can add the code to be done when the login is pressed
-            if (!IsValid(txtUser.Text.ToString()) || !IsValid(txtPass.Password.ToString()))
-            {
-                txtUser.Clear();
-                txtPass.Clear();
-            }
-
-            PayContext c = new PayContext();
-            var result = (from a in c.Logins
-                          where a.username.Trim() == txtUser.Text &&
-                          a.password.Trim() == txtPass.Password
-                          select new { a.id }).ToList();
-            if (result.Count != 0)
-            {
-                PayContext.currentId = result[0].id;
-                Dashboard objDashWindow = new Dashboard();
-                this.Close();
-                objDashWindow.Show();
-            }
+            
+            Dashboard objDashWindow = new Dashboard();
+            this.Close();
+            objDashWindow.Show();
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)

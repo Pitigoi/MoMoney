@@ -19,7 +19,9 @@
             <Button x:Name="NewEntryBtn"
                     Margin="552,22,20,13.2"
                     Height="40"
-                    Background="Purple"
+                    Background="MediumPurple"
+                    Foreground="White"
+                    FontWeight="DemiBold"
                     Content="Add new entry +"
                     FontSize="16"
                     HorizontalAlignment="Stretch"
@@ -33,15 +35,16 @@
                 </Button.Resources>
             </Button>
 
+            <Image Grid.Row="0" Source="list.png" RenderTransformOrigin="-10.517,0.539" Margin="30,22,649,21.2"/>
+
             <TextBlock Text="Activity"
-                       
-                       FontSize="25"
-                        Margin="25,22,588,13.2"/>
+                       FontWeight="DemiBold"
+                       FontSize="20"
+                        Margin="56,22,557,13.2"/>
             <Border Grid.Row="1"  CornerRadius="10,10,10,10" BorderThickness="2,2,2,2"
                     Margin="25,9.8,20,39.6"
                     Background="PeachPuff">
                 <DataGrid x:Name="DataGridEntries"
-                          AutoGenerateColumns="False"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Top"
                           Margin="1,1,1,1"
@@ -58,8 +61,11 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Action" Width="150" Binding="{Binding _name}" />
                         <DataGridTextColumn Header="Category" Width="150" Binding="{Binding _category}" />
-                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value, StringFormat=C}" />
+                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value}" />
                         <DataGridTextColumn Header="Date" Width="150" Binding="{Binding _date}"/>
+
+
+
                     </DataGrid.Columns>
 
                 </DataGrid>

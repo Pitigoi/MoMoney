@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:login"
         mc:Ignorable="d"
         Height="600" Width="920"
@@ -16,14 +17,15 @@
         <local:MainViewModel/>
     </Window.DataContext>
 
-    <Border Background="#272537"
+
+    <Border Background="LightSteelBlue"          
             CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
@@ -52,10 +54,10 @@
                             Click="btnMinimize_Click">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
+                                <Setter Property="Background" Value="Gray"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
+                                        <Setter Property="Background" Value="LightGray"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -82,10 +84,10 @@
                             Click="btnClose_Click">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Setter Property="Background" Value="Crimson"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
+                                        <Setter Property="Background" Value="OrangeRed"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -102,36 +104,64 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                
+
             </Grid>
 
             <!--logo here-->
+            <Image Grid.Column="0" Grid.Row="0" Source="logo.png"></Image>
+          
+            <TextBlock x:Name="WelcomeTextBox" Grid.Row="0" Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Margin="10,0,376,520" Grid.RowSpan="2" FontSize="20" FontWeight="DemiBold"
+                       ></TextBlock>
+            
+            <Border Grid.Row="2" Grid.Column="0" CornerRadius="10" Background="DarkSlateBlue" Margin="5">
 
-        <StackPanel  Grid.Row="1">
-                <RadioButton Name="Home"
+                <StackPanel Background="DarkSlateBlue" Margin="5" Grid.RowSpan="2">
+
+                    <Label Content="Menu" Margin="32,10,0,10" Height="30" FontSize="18" FontWeight="DemiBold" Foreground="white"
+                           VerticalAlignment="Center" HorizontalAlignment="Left" Width="87"/>
+
+                    <RadioButton x:Name="Home"
+                             
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding HomeViewCommand}"/>
-                <RadioButton Name="Activity"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding EntriesViewCommand}"/>
-                <RadioButton Name="Charts"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Command="{Binding HomeViewCommand}">
+                        <StackPanel Orientation="Horizontal" Width="32">
+                            <Image Height="35" Width="32" Source="Home.png" Stretch="Fill"/>
 
-            </StackPanel>
+                        </StackPanel>
+                    </RadioButton>
+
+
+                    <RadioButton x:Name="Activity"
+                              
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme2}"
+                                
+                             Command="{Binding EntriesViewCommand}"/>
+                    <RadioButton x:Name="Charts"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource btnTheme}"
+                             Command="{Binding ChartsViewCommand}"/>
+                    
+
+                </StackPanel>
+            </Border>
+
+
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
                             Content="{Binding CurrentView }"/>
+
         </Grid>
     </Border>
 

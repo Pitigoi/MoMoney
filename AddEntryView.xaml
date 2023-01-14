@@ -117,18 +117,8 @@
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
                                FontSize="16"/>
-                    <TextBox x:Name="txtDate"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="Blue"
-                             CaretBrush="Blue"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="20,0,117,0"
-                             Padding="0,0,0,0" />
+                    <DatePicker x:Name="DateBox"
+                        Margin="20,10,117,0" Height="29"/>
                     <TextBlock Text="Description:"
                            Margin="20,20,0,5"
                            HorizontalAlignment="Left"

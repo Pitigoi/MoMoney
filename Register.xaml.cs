@@ -59,20 +59,21 @@ namespace login
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            PayContext c = new PayContext();
+            
+
             username = txtUser.Text;
             password = txtPass.Password;
             string check = txtPassConfirm.Password;
-            var result = (from a in c.Logins
-                          where a.username.Trim() == username.ToString()
-                          select new { a.id }).ToList().Count;
-            if (result>0)
-            {
-                //user deja existent
-                //Error2.Visibility = Visibility.Visible;
-                txtUser.Clear();
-            }
-            else if (password != check)
+            //Adaugi aici verificarea sa nu fie userul deja in sistem cu inca un statement de if cu codul 
+
+            /*
+             ErrorUsername.Visibility = Visibility.Visible;
+            txtUser.Clear();
+             
+             */
+            //ca sa faci mesajul de eroare vizibil 
+
+            if (password != check)
             {
                 Error.Visibility = Visibility.Visible;
                 txtPass.Clear();
@@ -81,11 +82,12 @@ namespace login
             }
             else
             {
+                ErrorUsername.Visibility = Visibility.Hidden;
                 Error.Visibility = Visibility.Hidden;
                 Dashboard objDashWindow = new Dashboard();
                // this.Hide();
                 objDashWindow.Show();
-                PayContext.AddUser("", username, password);
+
             }
 
             //to do: save in db user and pass;

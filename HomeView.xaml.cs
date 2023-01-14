@@ -33,54 +33,23 @@ namespace login
             
 
             InitializeComponent();
-            
-
-
-
-            LoadBudgetInfoCardNumberValues();
-            //AddCategories();
-            PieChartInitializer();    
+            LoadBudgetInfoCardNumberValues("700", "777", "1111");
+             //AddCategories();
+              PieChartInitializer();
            
 
         }
 
         //add your link to the database here and the functions to compute the totals so you can display these values ^
-        private void LoadBudgetInfoCardNumberValues()
+        private void LoadBudgetInfoCardNumberValues(string budget, string income, string expense)
         {
-            PayContext c = new PayContext();
-            var a = (from p in c.Payments where p.uid == PayContext.currentId select Math.Abs(p.amount)
-                ).ToList().Sum();
-            var b = (from i in c.Incomes
-                     where i.uid == PayContext.currentId
-                     select i.amount
-                ).ToList().Sum();
-            ///pentru luna,an
-            /*
-            DateTime dl = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-
-            var al = (from p in c.Payments where p.uid == PayContext.currentId && p.time >= dl select Math.Abs(p.amount)
-                ).ToList().Sum();
-            var bl = (from i in c.Incomes
-                      where i.uid == PayContext.currentId && i.time >= dl
-                      select i.amount
-                ).ToList().Sum();
-
-            DateTime da = new DateTime(DateTime.Now.Year, 1, 1);
-
-            var aa = (from p in c.Payments where p.uid == PayContext.currentId && p.time >= da select Math.Abs(p.amount)
-                ).ToList().Sum();
-            var ba = (from i in c.Incomes
-                      where i.uid == PayContext.currentId && i.time >= da
-                      select i.amount
-                ).ToList().Sum();*/
-            this.budget.Number = (b - a).ToString("c");
-            this.income.Number = b.ToString("c");
-            this.expense.Number = a.ToString("c");
+            this.budget.Number = budget;
+            this.income.Number = income;
+            this.expense.Number = expense;
         }
 
         public void AddCategories(List<string> categs)
         {
-           
             categories = new List<string> { "groceries", "home", "bills" };
 
            // this.categories = categs;
@@ -95,35 +64,23 @@ namespace login
         
         private void PieChartInitializer()
         {
-            PayContext c=new PayContext();
-            var categories = (from p in c.Categories select p.name.Trim()
-               ).ToList();
-            var usage = (from p in c.Categories select (decimal)p.id).ToList();
-              
-            //for
-            //= (from p in c.Payments where p.uid == PayContext.currentId select p.amount
-            //   ).ToList();
+
 
             LiveCharts.SeriesCollection psc = new LiveCharts.SeriesCollection { };
-            
+            /*
             for(int i =0;i<categories.Count();i++)
             {
-                usage[i] = (from p in c.Payments where p.id == i select p.amount).ToList().Sum();
-                if (usage[i] != 0)
+                psc.Add(
+                new PieSeries
                 {
-                    psc.Add(
-                    new PieSeries
-                    {
-                        Title = categories[i],
-                        Values = new ChartValues<decimal> { usage[i] },
-                        DataLabels = true,
+               Title = categories[i],
+               Values = new ChartValues<double> {usage[i] },
+               DataLabels = true,
 
-                        //Fill = System.Windows.Media.Brushes.Gray
-                    });
-                }
-            }
-
-            /*psc.Add(
+               //Fill = System.Windows.Media.Brushes.Gray
+                });
+            }*/
+            psc.Add(
                 new PieSeries
                 {
                     Title = "bills",
@@ -141,7 +98,7 @@ namespace login
                     DataLabels = true,
 
                     //Fill = System.Windows.Media.Brushes.Gray
-                });*/
+                });
 
 
 

@@ -14,13 +14,15 @@ using System.Windows.Shapes;
 
 namespace login
 {
+    /// <summary>
+    /// Interaction logic for AddEntryView.xaml
+    /// </summary>
     public partial class AddEntryView : Window
     {
+       
         public AddEntryView()
         {
             InitializeComponent();
-            PayContext c = new PayContext();
-            CategoryComboBox.ItemsSource =(from a in c.Categories select a.name.Trim()).ToList();
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -34,33 +36,32 @@ namespace login
             this.Close();
         }
 
+        //change this function to suit u, i guess u ll be using a list as a parameter or idk
+        public void addComboBoxCategoryItems(string category)
+        {
+            this.CategoryComboBox.Items.Add(category);
+        }
+        public Entry ReturnFromSaveBtn()
+        {
+            string categ = this.CategoryComboBox.SelectedItem.ToString();
+            string value = this.txtAmount.Text;
+            DateTime date = this.DateBox.SelectedDate.Value.Date;
+           // string date = this.txtDate.Text;
+            string desc = this.txtDescription.Text;
+            return new Entry(desc, value, date, categ);
+
+        }
         private void Save_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            
             //here u do the magic to add the new entry to the db and the datagrid
             // use this.txtAmount.Text to get the amount of money
             // use this.txtDate.Text to get the date
             // use this.txtDescription.Text to get the description (ex: sold my latop; got money for xmas, etc)
-            PayContext c = new PayContext();
-            decimal val = decimal.Parse(txtAmount.Text.ToString());
-            if (CategoryComboBox.SelectedIndex!=-1)
-            {
-                int categid= (from a in c.Categories
-                              select a.id).ToList()[CategoryComboBox.SelectedIndex];
-                if (val > 0)
-                    val = -val;
-                PayContext.AddPayment(categid, val, txtDescription.Text, DateTime.Parse(txtDate.Text));
-                Close();
-            }
-            else if(val>0)
-            {
-                PayContext.AddIncome(val, txtDescription.Text, DateTime.Parse(txtDate.Text));
-                Close();
-            }
-            else
-            {
-                txtAmount.Text.Remove(0,1);
-            }
+            
+            
+            this.Close();
+
         }
     }
 }
