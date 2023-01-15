@@ -108,7 +108,7 @@ namespace login
             
             for(int i =0;i<categories.Count();i++)
             {
-                usage[i] = (from p in c.Payments where p.id == i select p.amount).ToList().Sum();
+                usage[i] = Math.Abs((from p in c.Payments where p.id == i select p.amount).ToList().Sum());
                 if (usage[i] != 0)
                 {
                     psc.Add(

@@ -61,7 +61,7 @@
                     <DataGrid.Columns >
                         <DataGridTextColumn Header="Action" Width="150" Binding="{Binding _name}" />
                         <DataGridTextColumn Header="Category" Width="150" Binding="{Binding _category}" />
-                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value, StringFormat=C}" />
+                        <DataGridTextColumn Header="Value" Width="150" Binding="{Binding _value}" />
                         <DataGridTextColumn Header="Date" Width="150" Binding="{Binding _date}"/>
 
 
