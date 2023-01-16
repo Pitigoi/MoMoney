@@ -268,7 +268,6 @@
     </Content>
     <Resource Include="money.png" />
     <Resource Include="moneyhoome.png" />
-    <Content Include="SQLQuery1.sql" />
     <Resource Include="user2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

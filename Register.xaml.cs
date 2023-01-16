@@ -68,8 +68,7 @@ namespace login
                           select new { a.id }).ToList().Count;
             if (result>0)
             {
-                //user deja existent
-                //Error2.Visibility = Visibility.Visible;
+                Error.Visibility = Visibility.Visible;
                 txtUser.Clear();
             }
             else if (password != check)
@@ -77,7 +76,6 @@ namespace login
                 Error.Visibility = Visibility.Visible;
                 txtPass.Clear();
                 txtPassConfirm.Clear();
-                
             }
             else
             {
@@ -87,8 +85,6 @@ namespace login
                 objDashWindow.Show();
                 PayContext.AddUser("", username, password);
             }
-
-            //to do: save in db user and pass;
         }
     }
 }
